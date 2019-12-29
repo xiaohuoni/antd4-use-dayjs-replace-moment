@@ -30,82 +30,19 @@ export default Calendar;
 
 ```
 
-### TimePicker
-
-```tsx
-import { Dayjs } from 'dayjs';
-
-import * as React from 'react';
-import DatePicker from './DatePicker';
-import { PickerTimeProps, RangePickerTimeProps } from 'antd/es/date-picker/generatePicker';
-import warning from 'antd/es/_util/warning';
-import { Omit } from 'antd/es/_util/type';
-
-const { TimePicker: InternalTimePicker, RangePicker: InternalRangePicker } = DatePicker;
-
-export interface TimeRangePickerProps extends RangePickerTimeProps<Dayjs> {}
-
-const RangePicker = React.forwardRef<any, TimeRangePickerProps>((props, ref) => {
-  return <InternalRangePicker {...props} picker="time" mode={undefined} ref={ref} />;
-});
-
-export interface TimePickerProps extends Omit<PickerTimeProps<Dayjs>, 'picker'> {
-  addon?: () => React.ReactNode;
-}
-
-const TimePicker = React.forwardRef<any, TimePickerProps>(
-  ({ addon, renderExtraFooter, ...restProps }, ref) => {
-    const internalRenderExtraFooter = React.useMemo(() => {
-      if (renderExtraFooter) {
-        return renderExtraFooter;
-      }
-      if (addon) {
-        warning(
-          false,
-          'TimePicker',
-          '`addon` is deprecated. Please use `renderExtraFooter` instead.',
-        );
-        return addon;
-      }
-      return undefined;
-    }, [addon, renderExtraFooter]);
-
-    return (
-      <InternalTimePicker
-        {...restProps}
-        mode={undefined}
-        ref={ref}
-        renderExtraFooter={internalRenderExtraFooter}
-      />
-    );
-  },
-);
-
-TimePicker.displayName = 'TimePicker';
-
-type MergedTimePicker = typeof TimePicker & {
-  RangePicker: typeof RangePicker;
-};
-
-(TimePicker as MergedTimePicker).RangePicker = RangePicker;
-
-export default TimePicker as MergedTimePicker;
-
-```
-
 ## 如何使用此 Demo
 
-使用 `src/components` 中的三个组件替换掉 antd 的 `DatePicker, Calendar, TimePicker`
+使用 `src/components` 中的组件替换掉 antd 的 `DatePicker, Calendar`，使用 `<DatePicker picker="time" />` 替代 antd 的`<TimePicker/>`。
 
 ```js
-import { DatePicker,Calendar ,TimePicker} from '@/components';
+import { DatePicker,Calendar } from '@/components';
 import format from 'dayjs';
 ```
 
 替换
 
 ```js
-import { DatePicker, Calendar, TimePicker } from 'antd';
+import { DatePicker, Calendar } from 'antd';
 import format from 'moment';
 ```
 
