@@ -4,7 +4,8 @@ import React from 'react';
 // import format from 'moment';
 
 // 这里是使用 dayjs 的写法
-import { DatePicker,Calendar ,TimePicker} from '@/components';
+// 使用 <DatePicker picker="time" /> 替代 <TimePicker/>
+import { DatePicker,Calendar } from '@/components';
 import format from 'dayjs';
 
 import styles from './index.css';
@@ -30,9 +31,9 @@ export default function() {
       </div>
       <Calendar onPanelChange={onPanelChange} />
       <div>
-        <TimePicker defaultValue={format('12:08:23', 'HH:mm:ss')} size="large" />
-        <TimePicker defaultValue={format('12:08:23', 'HH:mm:ss')} />
-        <TimePicker defaultValue={format('12:08:23', 'HH:mm:ss')} size="small" />
+        <DatePicker defaultValue={format('12:08:23', 'HH:mm:ss')} size="large" picker="time"/>
+        <DatePicker defaultValue={format('12:08:23', 'HH:mm:ss')} picker="time"/>
+        <DatePicker defaultValue={format('12:08:23', 'HH:mm:ss')} size="small" picker="time"/>
       </div>
     </div>
   );
