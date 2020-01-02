@@ -1,12 +1,11 @@
 import React from 'react';
 // 这里是 antd 现在官方的写法
-// import { DatePicker, Calendar, TimePicker } from 'antd';
-// import format from 'moment';
+import { DatePicker, Calendar, TimePicker } from 'antd';
+import format from 'moment';
 
 // 这里是使用 dayjs 的写法
-// 使用 <DatePicker picker="time" /> 替代 <TimePicker/>
-import { DatePicker,Calendar } from '@/components';
-import format from 'dayjs';
+// import { DatePicker,Calendar,TimePicker } from '@/components';
+// import format from 'dayjs';
 
 import styles from './index.css';
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
@@ -31,9 +30,9 @@ export default function() {
       </div>
       <Calendar onPanelChange={onPanelChange} />
       <div>
-        <DatePicker defaultValue={format('12:08:23', 'HH:mm:ss')} size="large" picker="time"/>
-        <DatePicker defaultValue={format('12:08:23', 'HH:mm:ss')} picker="time"/>
-        <DatePicker defaultValue={format('12:08:23', 'HH:mm:ss')} size="small" picker="time"/>
+        <TimePicker defaultValue={format('12:08:23', 'HH:mm:ss')} size="large" />
+        <TimePicker defaultValue={format('12:08:23', 'HH:mm:ss')} />
+        <TimePicker defaultValue={format('12:08:23', 'HH:mm:ss')} size="small" />
       </div>
     </div>
   );

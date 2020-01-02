@@ -117,8 +117,22 @@ import format from 'moment';
 
 ### moment
 
+```bash
+File sizes after gzip:
+
+  291.96 KB  dist/umi.js
+  14.61 KB   dist/umi.css
+```
+
 ![moment2.07MB](./moment.png)
 
 ### dayjs
+
+```bash
+File sizes after gzip:
+
+  207.52 KB  dist/umi.js
+  14.49 KB   dist/umi.css
+```
 
 ![dayjs1.52MB](./dayjs.png)
